@@ -1,5 +1,7 @@
 DROP DATABASE IF EXISTS ibaimove;
-CREATE DATABASE ibaimove CHARACTER SET utf8mb4;
+CREATE DATABASE ibaimove 
+	CHARACTER SET utf8mb4
+	COLLATE utf8mb4_0900_ai_ci;
 USE ibaimove;
 
 -- Primero las tablas a las que apuntan otras: estaciones,
@@ -28,7 +30,7 @@ CREATE TABLE estaciones (
 
 CREATE TABLE tarifas (
   tipo              VARCHAR(10)  NOT NULL,
-  electrico         TINYINT(1)   NOT NULL,
+  electrico         TINYINT   	 NOT NULL,
   precio_desbloqueo DECIMAL(4,2) NOT NULL,
   precio_minuto     DECIMAL(4,2) NOT NULL,
   CONSTRAINT pk_tarifas 
