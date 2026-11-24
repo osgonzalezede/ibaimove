@@ -51,7 +51,7 @@ CREATE TABLE clientes (
   apellidos  VARCHAR(100) NOT NULL,
   correo     VARCHAR(100) NOT NULL,
   telefono   VARCHAR(15),                        -- opcional
-  fecha_alta DATE         NOT NULL,             -- obligatoria y sin valor por defecto
+  fecha_alta DATE         NOT NULL,              -- obligatoria y sin valor por defecto
   saldo      DECIMAL(7,2) NOT NULL DEFAULT 0.00, -- puede ser negativo (RN-07)
   CONSTRAINT pk_clientes 
   	PRIMARY KEY (id_cliente),
@@ -80,9 +80,11 @@ CREATE TABLE vehiculos (
     REFERENCES tarifas (tipo, electrico)
     	ON DELETE RESTRICT 
     	ON UPDATE RESTRICT,
-  CONSTRAINT fk_vehiculos_estaciones FOREIGN KEY (id_estacion)
+  CONSTRAINT fk_vehiculos_estaciones 
+  	FOREIGN KEY (id_estacion)
     REFERENCES estaciones (id_estacion)
-    ON DELETE RESTRICT ON UPDATE RESTRICT,
+    	ON DELETE RESTRICT 
+    	ON UPDATE RESTRICT,
   CONSTRAINT ck_vehiculos_estado
     CHECK (estado IN ('disponible', 'en uso', 'averiado', 'retirado')),
   -- RN-03: batería de 0 a 100 en los eléctricos y sin batería en los demás
@@ -107,7 +109,7 @@ CREATE TABLE recargas (
     	ON UPDATE RESTRICT,
   -- RN-09
   CONSTRAINT ck_recargas_importe 
-  	CHECK (importe >= 5),
+  	CHECK (importe >= 5.00),
   -- S-01
   CONSTRAINT ck_recargas_tipo_pago 
   	CHECK (tipo_pago IN ('tarjeta', 'bizum'))
