@@ -40,3 +40,19 @@ WHERE id_estacion_destino IS NULL;
 
 -- A-01 - Lista de estaciones con su barrio, su capacidad y su dirección completa en una sola columna
 -- (por ejemplo, "Gran Vía 45, 48011 Bilbao"), ordenadas por barrio y, dentro de cada barrio, por nombre.
+SELECT 
+	barrio,
+	nombre,
+	capacidad,
+	CONCAT(calle, ' ', numero, ', ', cp,' ', localidad)
+FROM estaciones
+ORDER BY barrio, nombre;
+
+-- A-08 - Lista de clientes con su nombre completo 
+-- en mayúsculas y el dominio de su correo (lo que va
+-- después de la @).
+SELECT 
+	UPPER(CONCAT(nombre, ' ', apellidos)) AS nombre_completo,
+	correo,
+	SUBSTRING_INDEX(correo, '@', -1)
+FROM clientes;
