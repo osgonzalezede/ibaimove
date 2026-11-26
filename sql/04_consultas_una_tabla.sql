@@ -85,4 +85,6 @@ SELECT
 FROM recargas
 GROUP BY tipo_pago;
 
+-- A-11 - Barrios con más de una estación
 
+SELECT barrio FROM estaciones;
