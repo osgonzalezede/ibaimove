@@ -78,4 +78,11 @@ GROUP BY estado;
 -- A-10 - ¿Cuánto dinero se ha recargado con cada 
 -- tipo de pago? ¿Cuál es la recarga media de cada tipo?
 
-SELECT * FROM recargas;
+SELECT 
+	tipo_pago,
+	SUM(importe) AS suma,
+	AVG(importe) AS media
+FROM recargas
+GROUP BY tipo_pago;
+
+
