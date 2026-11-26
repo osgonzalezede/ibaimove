@@ -87,4 +87,8 @@ GROUP BY tipo_pago;
 
 -- A-11 - Barrios con más de una estación
 
-SELECT barrio FROM estaciones;
+SELECT 
+	barrio
+FROM estaciones
+GROUP BY barrio
+HAVING COUNT(*) > 1;
