@@ -69,3 +69,13 @@ SELECT
 	AS minutos 
 FROM viajes
 WHERE fecha_hora_fin IS NOT NULL;
+
+-- A-09 - ¿Cuántos vehículos hay en cada estado?
+SELECT estado, COUNT(*)
+FROM VEHICULOS
+GROUP BY estado;
+
+-- A-10 - ¿Cuánto dinero se ha recargado con cada 
+-- tipo de pago? ¿Cuál es la recarga media de cada tipo?
+
+SELECT * FROM recargas;
