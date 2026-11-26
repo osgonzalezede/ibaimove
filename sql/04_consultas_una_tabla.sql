@@ -56,3 +56,16 @@ SELECT
 	correo,
 	SUBSTRING_INDEX(correo, '@', -1)
 FROM clientes;
+
+-- A-06 - ¿Cuántos minutos duró cada viaje terminado?
+
+SELECT 
+	id_viaje, 
+	fecha_hora_inicio, 
+	fecha_hora_fin,
+	CEIL(TIMESTAMPDIFF(SECOND, 
+		fecha_hora_inicio, 
+		fecha_hora_fin) / 60) 
+	AS minutos 
+FROM viajes
+WHERE fecha_hora_fin IS NOT NULL;
