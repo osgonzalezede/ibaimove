@@ -1,10 +1,25 @@
 USE ibaimove;
 -- B-05 - ¿Desde qué barrio salen más viajes?
-
 SELECT 	
 	e.barrio,
-	COUNT(*)
+	COUNT(*) AS salidas
 FROM estaciones AS e
 JOIN viajes AS v
+ON 
+	e.id_estacion = 
+	v.id_estacion_origen
+GROUP BY e.barrio
+ORDER BY salidas DESC
+LIMIT 1;
+
+/*
+SELECT 	
+	v.id_viaje,
+	v.id_estacion_origen,	
+	e.id_estacion,
+	e.barrio	
+FROM viajes AS v
+RIGHT JOIN estaciones AS e
 ON e.id_estacion = v.id_estacion_origen
-GROUP BY barrio;
+ORDER BY id_viaje asc
+*/
