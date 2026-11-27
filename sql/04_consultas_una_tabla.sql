@@ -92,3 +92,15 @@ SELECT
 FROM estaciones
 GROUP BY barrio
 HAVING COUNT(*) > 1;
+
+-- A-12 - Para cada día, 
+-- número de viajes y 
+-- total ingresado, 
+-- solo de los días con más de 2 viajes.
+SELECT 
+	DATE(fecha_hora_inicio) AS fecha,
+	COUNT(*) AS viajes,
+	SUM(importe) AS total
+FROM viajes
+GROUP BY fecha
+HAVING viajes > 2;
