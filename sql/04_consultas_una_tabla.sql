@@ -104,3 +104,18 @@ SELECT
 FROM viajes
 GROUP BY fecha
 HAVING viajes > 2;
+
+-- A-13 - Subir 0.05€ el precio por minuto 
+-- de los patinetes
+SELECT 
+	tipo, 
+	electrico, 
+	precio_minuto 
+FROM tarifas
+WHERE tipo = 'patinete';
+
+UPDATE tarifas
+SET
+	precio_minuto = precio_minuto + 0.05
+WHERE tipo = 'patinete';
+
