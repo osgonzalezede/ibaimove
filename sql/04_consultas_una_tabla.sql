@@ -119,3 +119,27 @@ SET
 	precio_minuto = precio_minuto + 0.05
 WHERE tipo = 'patinete';
 
+-- A-14 - Retirar del servicio 
+-- un vehículo concreto (elige uno).
+SELECT codigo, estado, id_estacion
+FROM vehiculos
+WHERE codigo = 'B-011';
+
+UPDATE vehiculos
+SET 
+	estado = 'retirado', 
+	id_estacion = NULL 
+WHERE codigo = 'B-011';
+
+-- A-15 - Eliminar las incidencias resueltas 
+-- de hace más de un año.
+
+SELECT * FROM incidencias
+WHERE 
+	fecha_hora < DATE_SUB(NOW(), INTERVAL 1 YEAR)
+	AND estado = 'resuelta';
+
+DELETE FROM incidencias
+WHERE 
+	fecha_hora < DATE_SUB(NOW(), INTERVAL 1 YEAR)
+	AND estado = 'resuelta';
